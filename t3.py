@@ -1,4 +1,12 @@
+"""
+Author: Kricktune54
+Date: 1/24/2022
+File Description: Tic tac toe game that can be played by two players 
+on one computer
+
+"""
 from IPython.display import clear_output
+import random
 
 def display_board(board):
     
@@ -7,8 +15,6 @@ def display_board(board):
     print(board[4]+'|'+board[5]+'|'+board[6])
     print('-|-|-')
     print(board[1]+'|'+board[2]+'|'+board[3])
-    
-import random
 
 def choose_first():
     if random.randint(0, 1) == 0:
@@ -54,21 +60,6 @@ def player_choice(board):
         
     return position
 
-def replay():
-    
-    return input('Do you want to play again? Enter Yes or No: ').lower().startswith('y')
-    
-def win_check(board,mark):
-    
-    return ((board[7] == mark and board[8] == mark and board[9] == mark) or # across the top
-    (board[4] == mark and board[5] == mark and board[6] == mark) or # across the middle
-    (board[1] == mark and board[2] == mark and board[3] == mark) or # across the bottom
-    (board[7] == mark and board[4] == mark and board[1] == mark) or # down the middle
-    (board[8] == mark and board[5] == mark and board[2] == mark) or # down the middle
-    (board[9] == mark and board[6] == mark and board[3] == mark) or # down the right side
-    (board[7] == mark and board[5] == mark and board[3] == mark) or # diagonal
-    (board[9] == mark and board[5] == mark and board[1] == mark)) # diagonal
-    
 def position_choice():
     
     choice = 'wrong'
@@ -82,11 +73,25 @@ def position_choice():
             
     return int(choice)
     
+def win_check(board,mark):
+    
+    return ((board[7] == mark and board[8] == mark and board[9] == mark) or # across the top
+    (board[4] == mark and board[5] == mark and board[6] == mark) or # across the middle
+    (board[1] == mark and board[2] == mark and board[3] == mark) or # across the bottom
+    (board[7] == mark and board[4] == mark and board[1] == mark) or # down the middle
+    (board[8] == mark and board[5] == mark and board[2] == mark) or # down the middle
+    (board[9] == mark and board[6] == mark and board[3] == mark) or # down the right side
+    (board[7] == mark and board[5] == mark and board[3] == mark) or # diagonal
+    (board[9] == mark and board[5] == mark and board[1] == mark)) # diagonal
+
+def replay():
+    
+    return input('Do you want to play again? Enter Yes or No: ').lower().startswith('y')
+    
 print('Welcome to Tic TAC TOE')
 while True:
     
     # Play the game
-    
     # Set everything up (board, who's first, choose markers X,O)
     
     the_board = [' ']*10
@@ -107,6 +112,7 @@ while True:
     
     while game_on:
         
+        # Loop for Player 1
         if turn == 'Player 1':
             # Show board
             display_board(the_board)
@@ -127,6 +133,7 @@ while True:
                 else: 
                     turn = 'Player 2'
                     
+        # Loop for Player 2           
         else:
             # Show board
             display_board(the_board)
