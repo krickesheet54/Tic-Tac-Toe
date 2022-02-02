@@ -109,11 +109,11 @@ while True:
         game_on = False
         
     # Game on 
-    
     while game_on:
         
         # Loop for Player 1
         if turn == 'Player 1':
+            
             # Show board
             display_board(the_board)
             
@@ -142,6 +142,7 @@ while True:
             
             place_marker(the_board,player2_marker,position)
             
+            # Loop checks if Player 2 has won
             if win_check(the_board,player2_marker):
                 display_board(the_board)
                 print('Player 2 wins!')
